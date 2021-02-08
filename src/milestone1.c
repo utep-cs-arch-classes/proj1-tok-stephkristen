@@ -4,7 +4,7 @@ int main() {
   printf(">");
 
   int input;
-  input - getchar();
+  input = getchar();
 
   while(input != EOF){
     putchar(input);
