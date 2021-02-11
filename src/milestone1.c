@@ -1,15 +1,20 @@
 #include <stdio.h>
-#define LIMIT 50
 
 /*This is milestone 1. Requiring us to read user
   input & print it back out. */
 
 int main() {
 
-  char str[LIMIT];
+  char input;
+  int i = 0;
+  char str[i];
 
   printf(">");
-  scanf("%[^\n]s", str);
-  printf("\n %s \n", str);
-  
+
+  for(input; (input = getchar()) != '\n'; i++){
+      str[i] = input;
+      putchar(input);
+    }
+
+  printf("\n");	
 }
