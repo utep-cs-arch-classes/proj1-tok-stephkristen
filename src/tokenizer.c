@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "tokenizer.h"
+#include <stdlib.h>
 
 /*
 Return true (non-zero) if c is a whitespace character
@@ -63,7 +64,7 @@ char *word_end(char *str){
   while(non_space_char(*s)){
     s++;
   }
-  return --s;
+  return s;
 }
 
 /*
@@ -82,4 +83,17 @@ int count_words(char *str){
     str++;
   }
   return counter;
+}
+
+char *copy_str(char *inStr, short len){
+
+  char *new = (char *)malloc(sizeof(len + 1));
+  int i;
+  
+  for(i = 0; i < len; i++){
+    *(new + i) = inStr[i];
+  }
+
+  new[i]= '\0';
+  return new;
 }
