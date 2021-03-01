@@ -36,4 +36,7 @@ int main(){
 
       int numOfWords = count_words(arr);
       printf("Number of words: %d\n", numOfWords);
+
+      char *copyString = copy_str(arr, 4);
+      printf("Copied string: %s\n", copyString);
 }
