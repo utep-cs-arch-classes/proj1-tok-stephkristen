@@ -85,6 +85,11 @@ int count_words(char *str){
   return counter;
 }
 
+/*
+Returns a freshly allocated zero-terminated string containing
+<len> chars from <inStr>
+ */
+
 char *copy_str(char *inStr, short len){
 
   char *new = (char *)malloc(sizeof(len + 1));
@@ -96,4 +101,34 @@ char *copy_str(char *inStr, short len){
 
   new[i]= '\0';
   return new;
+}
+
+/* Returns a freshly allocated zero-terminated vector of freshly allocated
+space-seperated tokens from zero-terminated str. */
+
+char **tokenize(char *s){
+
+}
+
+/* Prints all tokens */
+
+void print_tokens(char **tokens){
+  int t;
+
+  while(tokens[t] != '\0'){
+    printf("%s\n", tokens[t]);
+    t++;
+  }
+}
+
+/* Frees all tokens and the vector containing them. */
+
+void free_tokens(char **tokens){
+  int t;
+
+  for(t =0; tokens[i] != '\0'; t++){
+    free(tokens[i]);
+  }
+
+  free(tokens);
 }
