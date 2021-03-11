@@ -39,4 +39,9 @@ int main(){
 
       char *copyString = copy_str(arr, 4);
       printf("Copied string: %s\n", copyString);
+
+      char *pointer = arr;
+      char **tokenizer = tokenize(arr);
+
+      print_tokens(tokenizer);
 }
