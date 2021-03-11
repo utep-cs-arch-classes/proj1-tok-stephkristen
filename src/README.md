@@ -1,12 +1,14 @@
 Project 1: Tokenizer
 ====================
+
 # Instructions:
 
-You should document your tokenizer in this file.
+This project builds a tokenizer, which is dividing a string into tokens, and maintains a history of those tokens. 
 
-This file is written in the refreshingly simple `markdown` text
-formatting language.
+Based on the following methods in 'tokenizer.c', we were able to generate the array of tokens based on the user input.
 
-To learn about text formatting using markdown, we encourage you to examine 
- - [../README.md](../README.md)
- - the online [Markdown Guide](https://www.markdownguide.org/).
+A user can test the project by inputing a string of characters and the following methods will run and input:
+ - Where the first word starts from the user input
+ - Where the first word ends from the user input
+ - The number of words that were inputted
+ - All the words inputted tokenized
