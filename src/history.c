@@ -3,6 +3,20 @@
 #include <stdlib.h>
 
 
+/* From history.h
+
+ typedef struct s_Item {
+   int id;
+   char *str;
+   struct s_Item *next;
+} Item;
+
+ typedef struct s_List {
+   struct s_Item *root;
+} List;
+
+ */
+
 //Initialize the linked list to keep the history.
 
 List* init_history(){
@@ -47,6 +61,17 @@ void add_history(List *list, char* str){
 
 char *get_history(List *list, int id){
 
+  Item *item_temp = list -> root;
+
+  while(item_temp != NULL){
+
+    if(item_temp -> id == id){
+      return item_temp -> str;    //if we find id that matches we return the string located in the                                     history
+    }
+    
+    item_temp = item_ temp -> next;
+  }
+  return NULL;
 }
 
 //Print the entire contents of the history list
@@ -67,4 +92,12 @@ void print_history(List *list){
 
 void free_history(List *list){
 
+  Item *item_temp;            
+
+  while(list -> root != NULL) {
+    item_temp = list -> root;
+    list -> root = list -> root -> next;
+    free(item_temp);                        //frees each item in list
+  }
+  free(list);   //then frees all memory allocated in list
 }
