@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "tokenizer.h"
+#include "history.h"
 #define LIMIT 100
 
 int main(){
@@ -17,18 +18,21 @@ int main(){
      word_start, word_end and count_words */
   
   char arr[LIMIT];
+  List *history = init_history();
 
+  char **tokenizer;
   char input;
   int i = 0;
 
   printf("Hello welcome. In this program you will be asked to input a string to be tokenized.\n");
-  printf("\nYou can print the history of your inputs by inputting \"*\". \n");
   printf("You can input \"!\" and the number of the index from history you would like to print.\n");
   printf("You can input \"#\" to exit the program.\n");
+  printf("After exiting, the entire history will print and will free history.");
   printf("Now enter the string to be tokenized: \n");
 
-  while(*arr != '#') {
-  printf("$");
+  while(arr[0] != '#'){
+
+    printf("$");
 
   for(i = 0; (input = getchar()) != '\n' && i< LIMIT -1; i++){
 
@@ -37,8 +41,12 @@ int main(){
 
       arr[i] = '\0';
 
-      if(*arr != '#' && *arr != '!'){
-  
+      if(arr[0] == '#'){
+	goto done;
+      }
+
+      else{
+	
       char *startPointer = word_start(arr);
       // printf("Word start: %c\n", *startPointer);
 
@@ -51,22 +59,21 @@ int main(){
       char *copyString = copy_str(arr, 4);
       // printf("Copied string: %s\n", copyString);
 
-      char *pointer = arr;
-      char **tokenizer = tokenize(arr);
+      tokenizer = tokenize(arr);
 
       printf("After tokenized: \n");
-      print_tokens(tokenizer);            //Prints all tokens
+      print_tokens(tokenizer);
+      free_tokens(tokenizer);
+      add_history(history, copy_str(arr,i));
       
-      }
-
-      if(*arr == '!'){
-	printf("l");               //Will print token from history at given index
-      }
-
-      if(*arr == '*'){
-	printf("h");               //Will print entire history of tokens
       }
   }
 
+ done:
+  print_history(history);
+
   printf("History will now be cleaned. Goodbye.\n");
+  free_history(history);
+  return 0;
+  
 }
